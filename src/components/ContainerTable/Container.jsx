@@ -4,7 +4,7 @@ import axios from 'axios';
 
 function ContainerTable() {
 
-    const [infoToAdd, setInfoToAdd] = useState({id: '', name: '', app_id: ''})
+    const [infoToAdd, setInfoToAdd] = useState({id: '', name: '', appId: ''})
 
     const [data, setData] = useState([])
 
@@ -26,7 +26,7 @@ function ContainerTable() {
     const sendInfo = useCallback(async() => {
         try {
             await axios.post('', 
-            {id: infoToAdd.id, name: infoToAdd.name, app_id: infoToAdd.app_id},
+            {id: infoToAdd.id, name: infoToAdd.name, appId: infoToAdd.appId},
             {
                 headers: {
                     'Content-Type': 'application/json'
@@ -57,7 +57,7 @@ function ContainerTable() {
                 </span>
                 <span>
                     <label className='app_id' htmlFor='app_id'>App id</label>
-                    <input id='app_id' type="text" value={infoToAdd.app_id} onChange={e => setInfoToAdd({...infoToAdd, app_id: e.target.value})}></input>
+                    <input id='app_id' type="text" value={infoToAdd.appId} onChange={e => setInfoToAdd({...infoToAdd, appId: e.target.value})}></input>
                 </span>
                 <span>
                     <button className='btn-for-submit' type='submit' onClick={(e) => {

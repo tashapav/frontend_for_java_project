@@ -6,8 +6,7 @@ function AppTable() {
 
     const [infoToAdd, setInfoToAdd] = useState({id: '', name: ''})
 
-    const [data, setData] = useState([{id: 1, name: 'name'}, {id: 1, name: 'name'}, {id: 1, name: 'name'}, {id: 1, name: 'name'}, 
-    {id: 1, name: 'name'}, {id: 1, name: 'name'}, {id: 1, name: 'name'}, {id: 1, name: 'name'}])
+    const [data, setData] = useState([])
 
     const getData = useCallback(async () => {
         try {
@@ -27,14 +26,14 @@ function AppTable() {
     const sendInfo = useCallback(async() => {
         try {
             await axios.post('', 
-            {id: infoToAdd.id, name: infoToAdd.name},
+            {id: infoToAdd.id, name: infoToAdd.name, containersId: infoToAdd.containersId},
             {
                 headers: {
                     'Content-Type': 'application/json'
                 }
             })
             .then(() => setData(...infoToAdd, infoToAdd))
-            .then(setInfoToAdd({id: '', name: ''}))
+            .then(setInfoToAdd({id: '', name: '', containersId: ''}))
         } catch (err) {
             console.log(err)
         }

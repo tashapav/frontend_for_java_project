@@ -4,7 +4,7 @@ import axios from 'axios';
 
 function TriggerTable() {
 
-    const [infoToAdd, setInfoToAdd] = useState({id: '', name: '', type: '', attributes: '', container_id: ''})
+    const [infoToAdd, setInfoToAdd] = useState({id: '', name: '', type: '', attributes: '', containerId: ''})
 
     const [data, setData] = useState([])
 
@@ -27,14 +27,14 @@ function TriggerTable() {
     const sendInfo = useCallback(async() => {
         try {
             await axios.post('', 
-            {id: infoToAdd.id, name: infoToAdd.name, type: infoToAdd.type, attributes: infoToAdd.attributes, container_id: infoToAdd.container_id},
+            {id: infoToAdd.id, name: infoToAdd.name, type: infoToAdd.type, attributes: infoToAdd.attributes, containerId: infoToAdd.containerId},
             {
                 headers: {
                     'Content-Type': 'application/json'
                 }
             })
             .then(() => setData(...infoToAdd, infoToAdd))
-            .then(setInfoToAdd({id: '', name: '', type: '', attributes: '', container_id: ''}))
+            .then(setInfoToAdd({id: '', name: '', type: '', attributes: '', containerId: ''}))
         } catch (err) {
             console.log(err)
         }
@@ -61,7 +61,7 @@ function TriggerTable() {
                 </span>
                 <span>
                     <label className='container_id' htmlFor='container_id'>Container id</label>
-                    <input id='container_id' type="text" value={infoToAdd.container_id} onChange={e => setInfoToAdd({...infoToAdd, container_id: e.target.value})}></input>
+                    <input id='container_id' type="text" value={infoToAdd.containerId} onChange={e => setInfoToAdd({...infoToAdd, containerId: e.target.value})}></input>
                 </span>
                 <span>
                     <button className='btn-for-submit' type='submit' onClick={(e) => {
